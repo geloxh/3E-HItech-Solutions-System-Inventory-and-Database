@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: asset-manager-server
+  profiles:
+    active: dev
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: ${MYSQL_URL:jdbc:mysql://localhost:3306/asset_manager}
+    username: ${MYSQL_USERNAME:asset_user}
+    password: ${MYSQL_PASSWORD:asset_pass}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:mySecretKey1234567890123456789012345678901234567890123456789012345678901234567890}
+    expiration: 86400000 # 24 hours in ms
+
+springdoc:
+  api-docs:
+    path: /api/docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    com.example.server.security: DEBUG

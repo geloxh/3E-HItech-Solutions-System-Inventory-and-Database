@@ -1,0 +1,5 @@
+com\example\client\controller\MainController.class
+com\example\client\controller\LoginController.class
+com\example\client\service\SessionManager.class
+com\example\client\Launcher.class
+com\example\client\service\ApiClient.class
